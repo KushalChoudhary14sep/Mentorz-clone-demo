@@ -122,6 +122,9 @@
                                                     <constraint firstAttribute="width" constant="55" id="RZe-MT-zUN"/>
                                                 </constraints>
                                                 <state key="normal" image="like"/>
+                                                <connections>
+                                                    <action selector="didTapOnLikeButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8WU-YS-UAT"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lbw-p9-oCm">
                                                 <rect key="frame" x="95" y="0.0" width="1" height="45"/>
@@ -137,6 +140,9 @@
                                                     <constraint firstAttribute="width" constant="55" id="jHh-vM-TsD"/>
                                                 </constraints>
                                                 <state key="normal" image="comment"/>
+                                                <connections>
+                                                    <action selector="didTapOnCommentButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="21Q-BT-A5Z"/>
+                                                </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdl-hy-xME">
                                                 <rect key="frame" x="231" y="0.0" width="1" height="45"/>
@@ -152,6 +158,9 @@
                                                     <constraint firstAttribute="width" constant="45" id="qaW-if-hfE"/>
                                                 </constraints>
                                                 <state key="normal" image="share"/>
+                                                <connections>
+                                                    <action selector="didTapOnShareButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sce-eL-L8L"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>

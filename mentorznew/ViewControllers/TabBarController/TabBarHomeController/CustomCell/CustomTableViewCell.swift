@@ -51,4 +51,32 @@ class TableViewCell: UITableViewCell {
         ratingView.settings.starMargin = 0
     }
     
+    @IBAction func didTapOnLikeButton(_ sender: Any) {
+    }
+    @IBAction func didTapOnCommentButton(_ sender: Any) {
+       let storyboard = UIStoryboard(name: "Main", bundle: nil)
+               let secondVC = storyboard.instantiateViewController(identifier: "CommentVC")
+        secondVC.modalPresentationStyle = .fullScreen
+              secondVC.modalTransitionStyle = .crossDissolve
+        GetTopMostViewController.getTopMostViewController()?.present(secondVC, animated: true, completion: nil)
+    }
+    @IBAction func didTapOnShareButton(_ sender: Any) {
+    }
+    
+    
+    
+}
+
+
+class GetTopMostViewController {
+    static func getTopMostViewController() -> UIViewController?{
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            return topController
+        }
+        return nil
+    }
+    
 }

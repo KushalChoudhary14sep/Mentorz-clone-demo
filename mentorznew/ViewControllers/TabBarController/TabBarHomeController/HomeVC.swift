@@ -22,9 +22,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
     }
     @IBOutlet var tableView: UITableView!
     @IBOutlet var sideMenuButton: UIButton!
-  
     @IBOutlet weak var addPostButton: UIButton!
-    
     @IBAction func searchButton(_ sender: Any) {
     }
     
@@ -81,6 +79,9 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         alertController.addAction(UIAlertAction(title: "Publish", style: .default, handler: nil))
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    
+    
 }
 
 

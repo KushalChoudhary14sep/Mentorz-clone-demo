@@ -16,6 +16,7 @@ struct SignUpResponse: Codable {
     let channels: Channels
     let name: String
 
+    
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
         case emailID = "email_id"

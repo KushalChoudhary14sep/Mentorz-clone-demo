@@ -25,6 +25,27 @@ class LoginViewController: UIViewController {
         TextFieldDesign.textFieldDesign(passwordTextField,"Password")
         TextFieldDesign.textFieldDesign(phoneNumberTextField,"Phone number")
         TextFieldDesign.textFieldDesign(countyCodePicker, "+91")
+        
+        phoneNumberTextField.addTarget(self, action: #selector(didPhoneNumberChanged), for: .editingChanged)
+        passwordTextField.addTarget(self, action: #selector(didPasswordChanged), for: .editingChanged)
+    }
+    @objc func didPhoneNumberChanged() {
+        let phNo = self.phoneNumberTextField.text ?? ""
+        if !phNo.isValidPHnumber(){
+            phoneNumberTextField.leadingAssistiveLabel.text = "Enter a valid Phone Number"
+            phoneNumberTextField.leadingAssistiveLabel.textColor = .red
+        } else {
+            phoneNumberTextField.leadingAssistiveLabel.text = ""
+        }
+    }
+    @objc func didPasswordChanged() {
+        let pass = self.passwordTextField.text ?? ""
+        if !pass.isValidPassword(){
+            passwordTextField.leadingAssistiveLabel.text = "Enter a valid Password"
+            passwordTextField.leadingAssistiveLabel.textColor = .red
+        } else {
+            passwordTextField.leadingAssistiveLabel.text = ""
+        }
     }
     
     @IBAction func didTapForgetPasswordButton(_ sender: Any) {
@@ -56,13 +77,16 @@ class LoginViewController: UIViewController {
             switch result {
             case .success(let response):
                 print(response)
+                self.showAlert(title: "Success!", message: "User Successfully Logged In!") {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let secondVC = storyboard.instantiateViewController(identifier: "TabBarRootViewController")
                 secondVC.modalPresentationStyle = .fullScreen
                 secondVC.modalTransitionStyle = .crossDissolve
                 self.present(secondVC, animated: true, completion: nil)
+                }
             case .failure(let error):
                 print(error)
+                self.showAlert(title: "Error!", message: "User Dosen't Exists!", comletion: nil)
             }
         }
     }
@@ -72,9 +96,15 @@ class LoginViewController: UIViewController {
         for index in 0..<textFields.count {
             guard (textFields[index].text?.count ?? 0) > 0 else {
                 let alertMessage = fetchAlertMessage(tag: textFields[index].tag)
-                showAlert(title: alertMessage["title"]!, message: alertMessage["message"]!)
+                showAlert(title: alertMessage["title"]!, message: alertMessage["message"]!, comletion: nil)
                 return false
             }
+        }
+        if phoneNumberTextField.leadingAssistiveLabel.text?.count ?? 0 > 0 {
+            return false
+        }
+        if passwordTextField.leadingAssistiveLabel.text?.count ?? 0 > 0 {
+            return false
         }
         return true
     }
@@ -95,20 +125,13 @@ class LoginViewController: UIViewController {
         return alert
     }
     
-    func showAlert(title: String, message: String)  {
+    func showAlert(title: String, message: String, comletion : (() -> Void)?)  {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-            case .default:
-                print("default")
-                
-            case .cancel:
-                print("cancel")
-                
-            case .destructive:
-                print("destructive")
-            }
+            comletion?()
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+
 }

@@ -108,9 +108,6 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
         return 4
     }
     
-    
-    
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }

@@ -6,13 +6,17 @@
 //
 
 import UIKit
+import MaterialComponents.MaterialTextControls_FilledTextAreas
+import MaterialComponents.MaterialTextControls_FilledTextFields
 
 class ForgotPasswordVC: UIViewController {
-
+    @IBOutlet weak var countryCodeTF: MDCFilledTextField!
+    @IBOutlet weak var phoneNumberTF: MDCFilledTextField!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        TextFieldDesign.textFieldDesign(phoneNumberTF,"Phone number")
+        TextFieldDesign.textFieldDesign(countryCodeTF, "+91")
     }
     
     @IBAction func didTapLoginButton(_ sender: Any) {

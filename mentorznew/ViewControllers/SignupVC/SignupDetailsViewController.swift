@@ -104,7 +104,6 @@ class SignupDetailsViewController: UIViewController {
                let secondVC = storyboard.instantiateViewController(identifier: "LoginViewController")
         secondVC.modalPresentationStyle = .fullScreen
               secondVC.modalTransitionStyle = .crossDissolve
-
         self.present(secondVC, animated: true, completion: nil)
     }
     
@@ -136,17 +135,25 @@ class SignupDetailsViewController: UIViewController {
         let phoneNumber = Int(self.phoneNumberTextField.text!) ?? 0
         SignUpRestManager.SignUp(request: SignUpRequest(email_id: email, phone_number: PHNumber(cc: 91, iso_alpha_2_cc: "in", number: phoneNumber), password: password, device_info: DeviceInformation(device_token: "testdtoken", device_type: "IOS"), user_profile: UserInfo(birth_date: "", name: firstName+" "+lastName , basic_info: "Java developer", video_bio_hres: ""))) { (result) in
             switch result {
-            case .success(let response):
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                       let secondVC = storyboard.instantiateViewController(identifier: "TabBarRootViewController")
-                secondVC.modalPresentationStyle = .fullScreen
-                      secondVC.modalTransitionStyle = .crossDissolve
-                self.present(secondVC, animated: true, completion: nil)
-                print(response)
+            case .success(_):
+                //success alert to user
+                self.showAlert(title: "Success!", message: "User Successfully Signedup!") {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let vc = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+                    AppDelegate().shared().window?.rootViewController = vc
+                    AppDelegate().shared().window?.makeKeyAndVisible()
+                }
+                //print(response)
             case .failure(let error):
-                print(error)
+                if let error = error as? CustomError {
+                    //show alert for user already exit error.value
+                    self.showAlert(title: "Error!", message: error.value, comletion: nil)
+                    //print(error.value)
+                }else {
+                    //something went wrong
+                    self.showAlert(title: "Error!", message: "Something went wrong!", comletion: nil)
+                }
             }
-            
         }
     
     }
@@ -158,7 +165,7 @@ class SignupDetailsViewController: UIViewController {
         for index in 0..<textFields.count {
             guard textFields[index].text?.count ?? 0 > 0 else {
                 let alertMessage = fetchAlertMessage(tag: textFields[index].tag)
-                showAlert(title: alertMessage["title"]!, message: alertMessage["message"]!)
+                showAlert(title: alertMessage["title"]!, message: alertMessage["message"]!, comletion: nil)
                 return false
             }
         }
@@ -203,19 +210,10 @@ class SignupDetailsViewController: UIViewController {
         }
         return alert
     }
-    func showAlert(title: String, message: String)  {
+    func showAlert(title: String, message: String, comletion : (() -> Void)?)  {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
-            case .default:
-                print("default")
-                
-            case .cancel:
-                print("cancel")
-                
-            case .destructive:
-                print("destructive")
-            }
+            comletion?()
         }))
         self.present(alert, animated: true, completion: nil)
     }

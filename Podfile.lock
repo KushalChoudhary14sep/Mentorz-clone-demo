@@ -52,7 +52,6 @@ PODS:
     - Alamofire (~> 5.0)
   - PageMenu (2.0.0)
   - SideMenu (6.5.0)
-  - UnderLineTextField (2.1.0)
 
 DEPENDENCIES:
   - Cosmos (~> 23.0)
@@ -62,7 +61,6 @@ DEPENDENCIES:
   - Moya (~> 14.0)
   - PageMenu
   - SideMenu
-  - UnderLineTextField (~> 2.0)
 
 SPEC REPOS:
   trunk:
@@ -74,7 +72,6 @@ SPEC REPOS:
     - Moya
     - PageMenu
     - SideMenu
-    - UnderLineTextField
 
 SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
@@ -85,8 +82,7 @@ SPEC CHECKSUMS:
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
-  UnderLineTextField: b3f5307b56962331e30a965e81b79aae2df1de83
 
-PODFILE CHECKSUM: 54dc5d389c2acf810da89d58be1acb2efe52f05c
+PODFILE CHECKSUM: b59dfdc318c0555fa1dbdf0afb3dbb10e9cebcc7
 
 COCOAPODS: 1.10.1
