@@ -35,7 +35,7 @@ extension userAPIUpdateProfileImage: TargetType {
             return ["user-agent":  useragent,
                 "Accept" : "application/json",
                 "Content-Type": "application/json",
-                "oauth-token": UserManager.shared.user!.authToken
+                "oauth-token": "\(UserManager.shared.user!.authToken)"
         ]
     }
     

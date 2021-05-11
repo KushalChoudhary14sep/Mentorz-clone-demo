@@ -9,4 +9,7 @@ target 'mentorznew' do
 	  pod 'MaterialComponents/TextControls+FilledTextFields'
 	  pod 'PageMenu'
 	  pod 'Cosmos', '~> 23.0'
+	  pod 'PagingTableView'
+    pod 'CountryPickerView'
+
 end

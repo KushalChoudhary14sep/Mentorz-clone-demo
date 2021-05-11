@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import  UIKit
+import UIKit
+import CountryPickerView
 
 import MaterialComponents.MaterialTextControls_FilledTextAreas
 import MaterialComponents.MaterialTextControls_FilledTextFields
@@ -27,18 +28,18 @@ class SignupDetailsViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
-    @IBOutlet weak var countryCodePicker: MDCFilledTextField!
+    @IBOutlet weak var countryCodePicker: UIButton!
     
     
-    
-    
+    var cpv :CountryPickerView?
+
+    var selectedCountry : Country?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.cpv = CountryPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         TextFieldDesign.textFieldDesign(passwordTextField,"Password")
         TextFieldDesign.textFieldDesign(phoneNumberTextField,"Phone number")
-        TextFieldDesign.textFieldDesign(countryCodePicker, "+91")
         TextFieldDesign.textFieldDesign(firstNameTextField,"First name")
         TextFieldDesign.textFieldDesign(lastNameTextField,"Last name")
         TextFieldDesign.textFieldDesign(emailTextField, "Email ID")
@@ -47,8 +48,17 @@ class SignupDetailsViewController: UIViewController {
         emailTextField.addTarget(self, action: #selector(didEmailChanged), for: .editingChanged)
         phoneNumberTextField.addTarget(self, action: #selector(didPhoneNumberChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(didPasswordChanged), for: .editingChanged)
+        countryCodePicker.addTarget(self, action: #selector(didTapOnCountryCodePicker), for: .allEvents)
+        countryCodePicker.setBottomBorder()
+        self.cpv?.delegate = self
+        self.cpv?.dataSource = self
+        self.cpv?.showPhoneCodeInView = true
         
     }
+    @objc func didTapOnCountryCodePicker() {
+        self.cpv?.showCountriesList(from: self)
+    }
+    
     @objc func didFristnameChanged(){
         let firstname = self.firstNameTextField.text ?? ""
         if !firstname.isValidName() {
@@ -128,12 +138,21 @@ class SignupDetailsViewController: UIViewController {
         if validateTextFields() == false{
             return
         }
+    //    guard let countryCodeSelected = self.selectedCountry else { return }
         let firstName = self.firstNameTextField.text!
         let lastName = self.lastNameTextField.text!
         let password = self.passwordTextField.text!
         let email = self.emailTextField.text!
-        let phoneNumber = Int(self.phoneNumberTextField.text!) ?? 0
-        SignUpRestManager.SignUp(request: SignUpRequest(email_id: email, phone_number: PHNumber(cc: 91, iso_alpha_2_cc: "in", number: phoneNumber), password: password, device_info: DeviceInformation(device_token: "testdtoken", device_type: "IOS"), user_profile: UserInfo(birth_date: "", name: firstName+" "+lastName , basic_info: "Java developer", video_bio_hres: ""))) { (result) in
+        let phoneNumber = self.phoneNumberTextField.text!
+        var cctext = self.selectedCountry?.phoneCode
+        if var cctext = cctext {
+            cctext.remove(at: cctext.startIndex)
+        }else{
+            cctext = "91"
+        }
+        
+        let signuprequest = SignUpRequest(emailID: email, phoneNumber: SSPhoneNumber(cc: "91", isoAlpha2_Cc: "in", number: phoneNumber), password: password, deviceInfo: SSDeviceInfo(deviceToken: "testdtoken", deviceType: "IOS"), userProfile: SSUserProfile(birthDate: "", name: firstName+" "+lastName , basicInfo: "Java developer", videoBioHres: ""))
+        SignUpRestManager.SignUp(request: signuprequest ) { (result) in
             switch result {
             case .success(_):
                 //success alert to user
@@ -216,6 +235,18 @@ class SignupDetailsViewController: UIViewController {
             comletion?()
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+
+}
+
+extension SignupDetailsViewController: CountryPickerViewDelegate, CountryPickerViewDataSource {
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+        self.selectedCountry = country
+        self.countryCodePicker.setTitle(country.phoneCode, for: .normal)
+    }
+    
+    func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool {
+        return true
     }
 
 }

@@ -13,7 +13,7 @@ enum userAPISignup{
 }
 extension userAPISignup: TargetType {
     var baseURL: URL {
-        return URL(string: "http://stgapp.mentorz.com:8080/mentorz/api")!
+        return URL(string: "https://core.mentorz.com:8443/mentorz/api")!
     }
     
     var path: String {
@@ -32,13 +32,11 @@ extension userAPISignup: TargetType {
         switch self {
         case .signUp(request: let request):
             return .requestCustomJSONEncodable(request, encoder: JSONEncoder())
-
         }
     }
     
     var headers: [String : String]? {
-        let useragent = UIDevice.current.identifierForVendor?.uuidString ?? ""
-        return ["user-agent":  useragent,
+        return [
                 "Accept" : "application/json",
                 "Content-Type": "application/json"
         ]

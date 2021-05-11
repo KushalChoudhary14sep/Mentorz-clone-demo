@@ -48,7 +48,6 @@ class UserManager : NSObject {
     func login(request: LoginRequest, handler: ((Result<LoginResponse,Error>)->())?){
         LoginRestManager.login(request: request){ (result) in
             switch result {
-            
             case .success(let response):
                 self.user = response
             case .failure(let error):

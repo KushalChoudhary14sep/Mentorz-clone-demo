@@ -11,8 +11,9 @@ import MaterialComponents.MaterialTextControls_FilledTextFields
 
 
 class TextFieldDesign {
-
     
+    
+
     static func textFieldDesign(_ textField : MDCFilledTextField,_ title : String){
         textField.label.text = title
       
@@ -29,8 +30,19 @@ class TextFieldDesign {
         textField.textColor = appColor.alwaysBlackColor
         textField.setUnderlineColor(#colorLiteral(red: 0.968627451, green: 0.1803921569, blue: 0.2196078431, alpha: 1) , for: MDCTextControlState.editing)
         textField.setUnderlineColor(UIColor.gray, for: MDCTextControlState.normal)
-      
+        textField.sizeToFit()
+        textField.font = UIFont.systemFont(ofSize: 16)
     }
    
 
+}
+
+extension UIButton {
+   
+    func setBottomBorder(){
+        let lineView = UIView(frame: CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: 1))
+        lineView.backgroundColor=UIColor.gray
+        self.addSubview(lineView)
+    }
+  
 }

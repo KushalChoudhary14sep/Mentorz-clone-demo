@@ -15,7 +15,7 @@ enum UserAPI {
 
 extension UserAPI: TargetType {
     var baseURL: URL {
-        return URL(string: "http://stgapp.mentorz.com:8080/mentorz/api/")!
+        return URL(string: "https://core.mentorz.com:8443/mentorz/api/")!
     }
     
     var path: String {
@@ -38,9 +38,7 @@ extension UserAPI: TargetType {
     }
     
     var headers: [String : String]? {
-        let userAgent = UIDevice.current.identifierForVendor?.uuidString ?? ""
         return [
-            "user-agent" : userAgent,
             "Accept" : "application/json",
             "Content-Type" : "application/json"
         ]

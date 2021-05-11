@@ -7,18 +7,17 @@ import Foundation
 
 // MARK: - LoginResponse
 struct LoginResponse: Codable {
-    let userID: Int
-    let emailID, userName: String
-    let userProfile: UserProfile
-    let authToken: String
-    let isAccountDeactivated, hasInterests, hasValues: Bool
-    let phoneNumber: PhoneNumber
-    let isNumberVerified: Bool
-    let chatToken, name: String
+    let userID: Int?
+    let userName: String?
+    let userProfile: LUserProfile
+    let authToken: String?
+    let isAccountDeactivated, hasInterests, hasValues: Bool?
+    let phoneNumber: LPhoneNumber
+    let isNumberVerified: Bool?
+    let chatToken, name: String?
 
     enum CodingKeys: String, CodingKey {
         case userID = "user_id"
-        case emailID = "email_id"
         case userName = "user_name"
         case userProfile = "user_profile"
         case authToken = "auth_token"
@@ -33,8 +32,8 @@ struct LoginResponse: Codable {
 }
 
 // MARK: - PhoneNumber
-struct PhoneNumber: Codable {
-    let cc, isoAlpha2_Cc, number: String
+struct LPhoneNumber: Codable {
+    let cc, isoAlpha2_Cc, number: String?
 
     enum CodingKeys: String, CodingKey {
         case cc
@@ -44,20 +43,28 @@ struct PhoneNumber: Codable {
 }
 
 // MARK: - UserProfile
-struct UserProfile: Codable {
-    let followers, following, mentors, mentees: Int
-    let basicInfo: String
-    let birthDate, chargePrice, requests: Int
-    let videoBioHres, name: String
-    let noofpost: Int
+struct LUserProfile: Codable {
+    let lresID, hresID: String?
+    let followers, following, mentors, mentees: Int?
+    let basicInfo: String?
+    let birthDate, chargePrice, requests: Int?
+    let videoBioLres, videoBioHres: String?
+    let name, lastName: String?
+    let noofpost: Int?
 
     enum CodingKeys: String, CodingKey {
+        case lresID = "lres_id"
+        case hresID = "hres_id"
         case followers, following, mentors, mentees
         case basicInfo = "basic_info"
         case birthDate = "birth_date"
         case chargePrice = "charge_price"
         case requests
+        case videoBioLres = "video_bio_lres"
         case videoBioHres = "video_bio_hres"
-        case name, noofpost
+        case name
+        case lastName = "last_name"
+        case noofpost
     }
 }
+

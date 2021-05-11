@@ -17,7 +17,6 @@ class LoginRestManager {
             switch result{
             case .success(let response):
                 do{
-                    _ = JSONDecoder()
                     let product = try JSONDecoder().decode(LoginResponse.self, from: response.data)
                     handler?(.success(product))
                     if response.statusCode == 200 {

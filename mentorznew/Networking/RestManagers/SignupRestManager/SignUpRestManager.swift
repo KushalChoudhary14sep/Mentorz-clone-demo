@@ -10,7 +10,7 @@ import Moya
 
 class SignUpRestManager {
     static let newprovider = MoyaProvider<userAPISignup>()
-    class func SignUp(request: SignUpRequest, handler: ((Result<SignUpResponse,Error>)->())?){
+    class func SignUp(request: SignUpRequest, handler: ((Result<SignupResponse,Error>)->())?){
         newprovider.request(.signUp(request: request)) { (result) in
             switch result{
             case .success(let response):
@@ -18,7 +18,7 @@ class SignUpRestManager {
                     handler?(.failure(CustomError(errorMsg: "User already exist")))
                 }
                 do{
-                    let product = try JSONDecoder().decode(SignUpResponse.self, from: response.data)
+                    let product = try JSONDecoder().decode(SignupResponse.self, from: response.data)
                   
                     if response.statusCode == 201 {
                         handler?(.success(product) )

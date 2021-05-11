@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         layout.minimumLineSpacing = 0
         layout.scrollDirection = .horizontal
         pageControl.numberOfPages = 4
-        pageControl.backgroundStyle = .automatic
+        //pageControl.backgroundStyle = .automatic
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.pageIndicatorTintColor = .lightGray
@@ -65,25 +65,25 @@ class ViewController: UIViewController {
 //           self.collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
 //        }
 //    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x) / Int(collectionView.frame.size.width)
+    }
    
   
     
     @IBAction func didTapSignupButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let secondVC = storyboard.instantiateViewController(identifier: "SignupDetailsViewController")
-        secondVC.modalPresentationStyle = .fullScreen
-              secondVC.modalTransitionStyle = .crossDissolve
-
-               show(secondVC, sender: self)
+        let storyboard = UIStoryboard(name: "Main", bundle:.main)
+        let vc = storyboard.instantiateViewController(identifier: "SignupDetailsViewController") as! SignupDetailsViewController
+        AppDelegate().shared().window?.rootViewController = vc
+        AppDelegate().shared().window?.makeKeyAndVisible()
            }
         
     @IBAction func didTapAlreadyRegisteredLoginButton(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-               let secondVC = storyboard.instantiateViewController(identifier: "LoginViewController")
-        secondVC.modalPresentationStyle = .fullScreen
-        secondVC.modalTransitionStyle = .crossDissolve
-
-        present(secondVC, animated: true, completion: nil)
+        let storyboard = UIStoryboard(name: "Main", bundle:.main)
+        let vc = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+        AppDelegate().shared().window?.rootViewController = vc
+        AppDelegate().shared().window?.makeKeyAndVisible()
     
     }
 

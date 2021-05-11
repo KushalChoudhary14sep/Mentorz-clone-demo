@@ -9,26 +9,42 @@ import Foundation
 import UIKit
 import MaterialComponents.MaterialTextControls_FilledTextAreas
 import MaterialComponents.MaterialTextControls_FilledTextFields
+import CountryPickerView
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var passwordTextField: MDCFilledTextField!
     @IBOutlet weak var phoneNumberTextField: MDCFilledTextField!
-    @IBOutlet weak var countyCodePicker: MDCFilledTextField!
     @IBOutlet weak var loginButton: LoginSignupButton!
     @IBOutlet weak var facebookButton: UIButton!
     @IBOutlet weak var linkedinButton: UIButton!
     @IBOutlet weak var appleButton: UIButton!
+    @IBOutlet weak var countryCodePicker: UIButton!
+    
+    var cpv :CountryPickerView?
+
+    var selectedCountry : Country?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         TextFieldDesign.textFieldDesign(passwordTextField,"Password")
         TextFieldDesign.textFieldDesign(phoneNumberTextField,"Phone number")
-        TextFieldDesign.textFieldDesign(countyCodePicker, "+91")
-        
+     
         phoneNumberTextField.addTarget(self, action: #selector(didPhoneNumberChanged), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(didPasswordChanged), for: .editingChanged)
+        countryCodePicker.addTarget(self, action: #selector(didTapOnCountryCodePicker), for: .allEvents)
+        self.cpv = CountryPickerView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        countryCodePicker.setBottomBorder()
+        self.cpv?.delegate = self
+        self.cpv?.dataSource = self
+        self.cpv?.showPhoneCodeInView = true
+        
     }
+    
+    @objc func didTapOnCountryCodePicker() {
+        self.cpv?.showCountriesList(from: self)
+    }
+    
     @objc func didPhoneNumberChanged() {
         let phNo = self.phoneNumberTextField.text ?? ""
         if !phNo.isValidPHnumber(){
@@ -55,8 +71,7 @@ class LoginViewController: UIViewController {
         secondVC.modalTransitionStyle = .crossDissolve
         present(secondVC, animated: true, completion: nil)
     }
-    
-    
+        
     @IBAction func didTapSignupButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "SplashViewController")
@@ -72,8 +87,9 @@ class LoginViewController: UIViewController {
         }
         let password = self.passwordTextField.text!
         let phoneNumber = self.phoneNumberTextField.text!
-        
-        UserManager.shared.login(request: LoginRequest(email_id: "", phone_number: PhoneNumber(cc: "91", isoAlpha2_Cc: "in", number: phoneNumber), password: password, device_info: DeviceInfo(device_token: "test_token", device_type: "ANDROID"))) { (result) in
+       
+        let loginrequest = LoginRequest(emailID: "", phoneNumber: PhoneNumber(cc: "91", isoAlpha2_Cc: "in", number:phoneNumber), password: password, deviceInfo: DeviceInfo(deviceToken: "test_token", deviceType: "ANDROID"))
+        UserManager.shared.login(request: loginrequest) { (result) in
             switch result {
             case .success(let response):
                 print(response)
@@ -135,3 +151,17 @@ class LoginViewController: UIViewController {
     
 
 }
+
+
+extension LoginViewController: CountryPickerViewDelegate, CountryPickerViewDataSource {
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+        self.selectedCountry = country
+        self.countryCodePicker.setTitle(country.phoneCode, for: .normal)
+    }
+    
+    func showPhoneCodeInList(in countryPickerView: CountryPickerView) -> Bool {
+        return true
+    }
+
+}
+

@@ -15,7 +15,7 @@ class LoginSignupButton: UIButton {
     setTitleColor(.white, for: .normal)
     backgroundColor = .red
     layer.cornerRadius = 5
-    titleLabel?.font =  UIFont(name: "systemfont", size: 20)
+    titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
 
 }
 }
