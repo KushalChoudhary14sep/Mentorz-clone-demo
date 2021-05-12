@@ -36,7 +36,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nmE-mB-4bH">
-                                <rect key="frame" x="86" y="50.5" width="60" height="12"/>
+                                <rect key="frame" x="86" y="50.5" width="54" height="12"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="kPc-OR-SPN">
                                         <rect key="frame" x="0.0" y="0.0" width="12" height="12"/>
@@ -46,25 +46,22 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 y ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffh-AW-pQg">
-                                        <rect key="frame" x="17" y="0.0" width="43" height="12"/>
+                                        <rect key="frame" x="17" y="0.0" width="37" height="12"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="uZt-kF-xtE"/>
-                                </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggd-tl-bRn" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="146" y="50.5" width="80" height="15"/>
+                                <rect key="frame" x="140" y="50.5" width="80" height="15"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="25D-qc-tBk"/>
                                     <constraint firstAttribute="height" constant="15" id="Ng2-He-QKX"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPk-D3-hf0">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPk-D3-hf0">
                                 <rect key="frame" x="16" y="99" width="456" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ul8-ea-v2Z"/>
@@ -162,7 +159,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4u2-7J-dxF">
-                                                <rect key="frame" x="272" y="-10" width="45" height="55"/>
+                                                <rect key="frame" x="272" y="15" width="45" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="55" id="EhM-wQ-YMF"/>
                                                     <constraint firstAttribute="width" constant="45" id="qaW-if-hfE"/>

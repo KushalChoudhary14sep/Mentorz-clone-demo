@@ -16,12 +16,12 @@ struct CommentResponse: Codable {
 
 // MARK: - CommentList
 struct CommentList: Codable {
-    let commentID: Int
-    let comment: String
-    let commentTime, userID: Int
-    let userName, lastName: String
-    let lresID, hresID: String
-    let name: String
+    let commentID: Int?
+    let comment: String?
+    let commentTime, userID: Int?
+    let userName, lastName: String?
+    let lresID, hresID: String?
+    let name: String?
 
     enum CodingKeys: String, CodingKey {
         case commentID = "comment_id"

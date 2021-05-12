@@ -9,11 +9,17 @@ import UIKit
 import Cosmos
 
 protocol ShowCommentVC{
-    func didShowCommentVC()
-    
+    func didShowCommentVC(cell : TableViewCell)
+}
+protocol SharePostID {
+    var data : PostList? { set get }
+    var commentsLabel: UILabel! { get }
+}
+protocol ShowSharePopOver {
+    func didShowSharePopOver(post: PostList)
 }
 
-class TableViewCell: UITableViewCell {
+class TableViewCell: UITableViewCell , SharePostID {
     
     @IBOutlet weak var contenView: UIView!
     @IBOutlet weak var profilePicImage: UIImageView!
@@ -37,12 +43,22 @@ class TableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        self.profilePicImage.image = UIImage(named: "default_avt_square")
+        self.userNameLabel.text = ""
+        self.postTimeLabel.text = ""
+        self.ratingView.rating = 0
+        self.postDescriptionLabel.text = ""
+        self.postImage.image = UIImage(named: "default_avt_square")
+        self.likesLabel.text = ""
+        self.commentsLabel.text = ""
+        self.sharesLabel.text = ""
+        self.viewsLabel.text = ""
     }
     
-    var isLabelAtMaxHeight = false
-    var data: PostList?
+    var isLabelAtMaxHeight = true
+    var data : PostList?
     var commentDelegate: ShowCommentVC?
+    var shareDelegate: ShowSharePopOver?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,15 +83,14 @@ class TableViewCell: UITableViewCell {
     }
     
     @IBAction func didTapOnReadMoreButton(_ sender: Any) {
-        
         if isLabelAtMaxHeight {
             readMoreButton.setTitle("read more", for: .normal)
-            isLabelAtMaxHeight = false
-            labelHeight.constant = 70
+            isLabelAtMaxHeight = true
+            labelHeight.constant = 40
         }
         else {
             readMoreButton.setTitle("read less", for: .normal)
-            isLabelAtMaxHeight = true
+            isLabelAtMaxHeight = false
             labelHeight.constant = getLabelHeight(width: postDescriptionLabel.bounds.width)        }
     }
     
@@ -90,7 +105,6 @@ class TableViewCell: UITableViewCell {
     
     
     @IBAction func didTapOnLikeButton(_ sender: Any) {
-        DispatchQueue.main.async { [self] in
             if let data = self.data {
                 if !(data.liked!) {
                     self.postLike(postid: (data.postID)!) { (result) in
@@ -112,44 +126,45 @@ class TableViewCell: UITableViewCell {
                     }
                 }
             }
-            
-        }
-        
     }
     @IBAction func didTapOnCommentButton(_ sender: Any) {
         
-        commentDelegate!.didShowCommentVC()
-       
+        commentDelegate!.didShowCommentVC(cell: self)
+        
     }
     @IBAction func didTapOnShareButton(_ sender: Any) {
+                
+        shareDelegate!.didShowSharePopOver(post: data!)
+        
     }
-    
+  
     
     func setData(data : PostList?){
         if let data = data {
             self.data = data
-            DispatchQueue.main.async {
                 self.userNameLabel.text = data.name! + " " + (data.lastName ?? "")
-                self.postTimeLabel.text = "\(data.shareTime! / (315360000000 * 5))y ago"
+            self.postTimeLabel.text = FormatDateAndTime.epocFormatter(time: data.shareTime!)
                 self.postDescriptionLabel.text = data.content.contentDescription
-                self.postImage.imageFromUrl(urlString : ((data.content.lresID) ?? ""), handler : nil)
+                ImageDownloder.loadImageFromURL(url: ((data.content.lresID) ?? ""), imageView: self.postImage)
                 self.likesLabel.text = "\(data.likeCount!) Likes"
                 self.commentsLabel.text = "\(data.commentCount!) Comments"
                 self.viewsLabel.text = "\(data.viewCount!) Views"
                 self.sharesLabel.text = "\(data.shareCount!) Share"
+            
                 self.loadImage(userid: data.userID!) { (url) in
-                    self.profilePicImage.imageFromUrl(urlString: url, handler: nil)
+                    ImageDownloder.loadImageFromURL(url: url, imageView: self.profilePicImage)
                 }
+            
                 self.loadRating(userid: data.userID!) { (rating) in
                     self.ratingView.rating = rating
                 }
+            
                 if self.data?.liked == true {
                     self.likeButton.setImage(UIImage(named: "selected_like"), for: .normal)
                 }
                 else {
                     self.likeButton.setImage(UIImage(named: "like"), for: .normal)
                 }
-            }
         }
     }
     
@@ -200,16 +215,4 @@ class TableViewCell: UITableViewCell {
 
 
 
-class GetTopMostViewController {
-    static func getTopMostViewController() -> UIViewController?{
-        if var topController = UIApplication.shared.keyWindow?.rootViewController {
-            while let presentedViewController = topController.presentedViewController {
-                topController = presentedViewController
-            }
-            return topController
-        }
-        return nil
-    }
-    
-}
 

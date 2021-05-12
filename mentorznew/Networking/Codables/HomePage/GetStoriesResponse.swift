@@ -15,7 +15,7 @@ struct GetStoriesResponse: Codable {
 }
 
 // MARK: - PostList
-struct PostList: Codable {
+class PostList: Codable {
     let postID, userID, shareTime: Int?
     var liked: Bool?
     let content: Content

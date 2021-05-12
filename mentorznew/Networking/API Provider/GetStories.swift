@@ -15,6 +15,8 @@ enum GetUserStories {
     case likePost(postid: Int)
     case unlikePost(postid: Int)
     case getComment(page: Int, postid: Int)
+    case postComment(request: Codable, postid: Int)
+    case sharePost(postid: Int)
 }
 
 extension GetUserStories: TargetType{
@@ -36,6 +38,10 @@ extension GetUserStories: TargetType{
             return "mentorz/api/v3/\(UserManager.shared.user!.userID!)/post/\(postid)/unlike"
         case .getComment(page: _, postid: let postid):
             return "mentorz/api/v3/\(UserManager.shared.user!.userID!)/post/\(postid)/comments"
+        case .postComment(request: _, postid: let postid):
+            return "mentorz/api/v3/\(UserManager.shared.user!.userID!)/post/\(postid)/comment"
+        case .sharePost(postid: let postid):
+            return "mentorz/api/v3/\(UserManager.shared.user!.userID!)/post/\(postid)/share"
         }
     }
     
@@ -53,6 +59,10 @@ extension GetUserStories: TargetType{
             return .post
         case .getComment(page: _):
             return .get
+        case .postComment(postid: _):
+            return .put
+        case .sharePost(postid: _):
+            return .post
         }
     }
     
@@ -75,6 +85,10 @@ extension GetUserStories: TargetType{
             return .requestPlain
         case .getComment(page: let page, postid: _):
             return .requestParameters(parameters: ["pageNo": page], encoding: URLEncoding.queryString)
+        case .postComment(request: let request, postid: _):
+            return .requestCustomJSONEncodable(request, encoder: JSONEncoder())
+        case .sharePost(postid: _):
+            return .requestPlain
         }
     }
     

@@ -89,6 +89,50 @@ class GetStoriesRestManager {
         }
     }
     
-//    func getComments(postid)
-//
+    func getComments(page: Int, postid: Int, handler: ((Result<CommentResponse,Error>) -> Void)?) {
+        GetStoriesRestManager.apiProvider.request(.getComment(page: page, postid: postid)) { (response) in
+            switch response{
+            
+            case .success(let response):
+                do {
+                    let decode = try JSONDecoder().decode(CommentResponse.self, from: response.data)
+                    handler?(.success(decode))
+                } catch let error {
+                    handler?(.failure(error))
+                }
+            case .failure(let error):
+                handler?(.failure(error))
+            }
+        }
+    }
+    
+  class func postComment(request: PostCommentRequest, postid: Int, handler: ((Result<PostCommentRespnse,Error>) -> Void)?) {
+        GetStoriesRestManager.apiProvider.request(.postComment(request: request, postid: postid)) { (response) in
+            switch response{
+            case .success(let response):
+                do {
+                    let product = try JSONDecoder().decode(PostCommentRespnse.self, from: response.data)
+                    handler?(.success(product))
+                } catch let error{
+                    handler?(.failure(error))
+                }
+            case .failure(let error):
+                handler?(.failure(error))
+            }
+        }
+    }
+    
+    func sharePost(postid: Int, handler: ((Result<Bool,Error>) -> Void)?) {
+        GetStoriesRestManager.apiProvider.request(.sharePost(postid: postid)) { (response) in
+            switch response{
+            
+            case .success(let response):
+                if response.statusCode == 204 {
+                    handler?(.success(true))
+                }
+            case .failure(let error):
+                handler?(.failure(error))
+            }
+        }
+    }
 }

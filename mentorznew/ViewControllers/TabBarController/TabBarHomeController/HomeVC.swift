@@ -12,6 +12,7 @@ import PagingTableView
 class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, PagingTableViewDelegate {
     
     var data = [PostList]()
+    private let refreshControl = UIRefreshControl()
     
     @IBOutlet weak var tableView: PagingTableView!
     
@@ -46,10 +47,24 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         self.tableView.dataSource = self
         self.tableView.separatorStyle = .none
         
-        
         self.tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "TableViewCell")
         
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = .red
+        self.tableView.addSubview(self.refreshControl)
+        tableView.rowHeight = UITableView.automaticDimension
+
     }
+    
+    @objc func refresh(_ sender: AnyObject) {
+        // Code to refresh content
+        self.data = [PostList]()
+        self.tableView.reloadData()
+        paginate(self.tableView, to: 0)
+        refreshControl.endRefreshing()
+    }
+    
     func getStoriesApiCall(page: Int){
         GetStoriesRestManager.shared.getStories(page: page) { (response) in
             switch response{
@@ -110,6 +125,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell
         cell?.setData(data: data[indexPath.row])
         cell?.commentDelegate = self
+        cell?.shareDelegate = self
         return cell!
     }
     
@@ -121,13 +137,30 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
 }
 
 extension HomeVC: ShowCommentVC{
-    func didShowCommentVC() {
+    func didShowCommentVC(cell : TableViewCell) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let secondVC = storyboard.instantiateViewController(identifier: "CommentVC")
-        secondVC.modalPresentationStyle = .fullScreen
-        secondVC.modalTransitionStyle = .crossDissolve
-        self.present(secondVC, animated: true, completion: nil)
+        let secondVC = storyboard.instantiateViewController(identifier: "CommentVC") as? CommentVC
+        secondVC?.datasource = cell
+            secondVC!.modalPresentationStyle = .fullScreen
+        secondVC!.modalTransitionStyle = .crossDissolve
+        self.present(secondVC!, animated: true, completion: nil)
     }
 }
 
+
+extension HomeVC: ShowSharePopOver{
+
+    
+    func didShowSharePopOver(post: PostList) {
+        let url = URL(string: "https://www.mentorz.com/stories/\(post.postID!)")
+        let content = post.content.contentDescription ?? "null"
+        let activityVC = UIActivityViewController(activityItems: [url as Any, content], applicationActivities: nil)
+
+        activityVC.popoverPresentationController?.sourceView = view.self
+        present(activityVC, animated: true, completion: nil)
+
+    }
+    
+    
+}
 

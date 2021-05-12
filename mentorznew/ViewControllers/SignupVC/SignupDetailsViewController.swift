@@ -15,24 +15,15 @@ import MaterialComponents.MaterialTextControls_FilledTextFields
 class SignupDetailsViewController: UIViewController {
     
     @IBOutlet weak var firstNameTextField: MDCFilledTextField!
-    
     @IBOutlet weak var lastNameTextField: MDCFilledTextField!
-    
     @IBOutlet weak var phoneNumberTextField: MDCFilledTextField!
-    
     @IBOutlet weak var emailTextField: MDCFilledTextField!
-    
     @IBOutlet weak var passwordTextField: MDCFilledTextField!
-    
     @IBOutlet weak var signUpButton: LoginSignupButton!
-    
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var countryCodePicker: UIButton!
     
-    
     var cpv :CountryPickerView?
-
     var selectedCountry : Country?
     
     override func viewDidLoad() {

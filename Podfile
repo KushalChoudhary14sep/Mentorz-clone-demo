@@ -11,5 +11,5 @@ target 'mentorznew' do
 	  pod 'Cosmos', '~> 23.0'
 	  pod 'PagingTableView'
     pod 'CountryPickerView'
-
+    pod 'Nuke'
 end

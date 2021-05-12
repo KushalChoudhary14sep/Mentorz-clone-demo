@@ -34,9 +34,11 @@
 		CA26FE9E264A8CEC00CA963F /* CommentResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26FE9D264A8CEC00CA963F /* CommentResponse.swift */; };
 		CA26FEA4264A8DD200CA963F /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26FEA2264A8DD200CA963F /* CommentTableViewCell.swift */; };
 		CA26FEA5264A8DD200CA963F /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA26FEA3264A8DD200CA963F /* CommentTableViewCell.xib */; };
+		CA26FEB5264ADB7200CA963F /* PostComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA26FEB4264ADB7200CA963F /* PostComments.swift */; };
 		CA2816AB2602374900AD8C12 /* RequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2816AA2602374900AD8C12 /* RequestVC.swift */; };
 		CA281DDB26496C6D0049212C /* userProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA281DDA26496C6D0049212C /* userProfileImage.swift */; };
 		CA28EA3726497D7500E54048 /* ratingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA28EA3626497D7500E54048 /* ratingResponse.swift */; };
+		CA2A97EB264C0B5100C2BEC6 /* DatTimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2A97EA264C0B5100C2BEC6 /* DatTimeFormatter.swift */; };
 		CA2C2867260319B500137D53 /* MeSceneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2C2865260319B500137D53 /* MeSceneTableViewCell.swift */; };
 		CA2C2868260319B500137D53 /* MeSceneTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA2C2866260319B500137D53 /* MeSceneTableViewCell.xib */; };
 		CA32B8282646AE6C00FBA4F0 /* String+validations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA32B8272646AE6C00FBA4F0 /* String+validations.swift */; };
@@ -102,9 +104,11 @@
 		CA26FE9D264A8CEC00CA963F /* CommentResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentResponse.swift; sourceTree = "<group>"; };
 		CA26FEA2264A8DD200CA963F /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		CA26FEA3264A8DD200CA963F /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		CA26FEB4264ADB7200CA963F /* PostComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostComments.swift; sourceTree = "<group>"; };
 		CA2816AA2602374900AD8C12 /* RequestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestVC.swift; sourceTree = "<group>"; };
 		CA281DDA26496C6D0049212C /* userProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userProfileImage.swift; sourceTree = "<group>"; };
 		CA28EA3626497D7500E54048 /* ratingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ratingResponse.swift; sourceTree = "<group>"; };
+		CA2A97EA264C0B5100C2BEC6 /* DatTimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatTimeFormatter.swift; sourceTree = "<group>"; };
 		CA2C2865260319B500137D53 /* MeSceneTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeSceneTableViewCell.swift; sourceTree = "<group>"; };
 		CA2C2866260319B500137D53 /* MeSceneTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeSceneTableViewCell.xib; sourceTree = "<group>"; };
 		CA32B8272646AE6C00FBA4F0 /* String+validations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+validations.swift"; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				CA281DDA26496C6D0049212C /* userProfileImage.swift */,
 				CA28EA3626497D7500E54048 /* ratingResponse.swift */,
 				CA26FE9D264A8CEC00CA963F /* CommentResponse.swift */,
+				CA26FEB4264ADB7200CA963F /* PostComments.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				CA24F52D26491306005E845B /* UIImage+DownloadImage.swift */,
 				CA24F5302649132F005E845B /* UIImage+UrlImage.swift */,
 				CA24F53326491355005E845B /* String+Base.swift */,
+				CA2A97EA264C0B5100C2BEC6 /* DatTimeFormatter.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -718,6 +724,7 @@
 				CA281DDB26496C6D0049212C /* userProfileImage.swift in Sources */,
 				CA804DD825EE751C003B7FB9 /* LoginPageViewController.swift in Sources */,
 				CA24F52B26490D63005E845B /* GetStoriesRestMangar.swift in Sources */,
+				CA26FEB5264ADB7200CA963F /* PostComments.swift in Sources */,
 				CA57772E25EFBA500029ECD9 /* SignUpJSONDecodable.swift in Sources */,
 				CAD293BA260241B100DC478C /* SessionVC.swift in Sources */,
 				CA54168F25F75594005953C2 /* UIColor+appColor.swift in Sources */,
@@ -726,6 +733,7 @@
 				CA57773125EFC8190029ECD9 /* TabBarRootViewController.swift in Sources */,
 				CA1F7EE425E1866300364A54 /* SplashViewController.swift in Sources */,
 				CA1F7EE025E1866300364A54 /* AppDelegate.swift in Sources */,
+				CA2A97EB264C0B5100C2BEC6 /* DatTimeFormatter.swift in Sources */,
 				CA7952212647A3F7009C3463 /* Login.swift in Sources */,
 				CA4199C72601D99B0081631E /* CustomAlertController.swift in Sources */,
 				CA26FEA4264A8DD200CA963F /* CommentTableViewCell.swift in Sources */,
@@ -908,7 +916,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q53SJPYVXR;
+				DEVELOPMENT_TEAM = A5M96MHLR7;
 				INFOPLIST_FILE = mentorznew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -929,7 +937,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Q53SJPYVXR;
+				DEVELOPMENT_TEAM = A5M96MHLR7;
 				INFOPLIST_FILE = mentorznew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

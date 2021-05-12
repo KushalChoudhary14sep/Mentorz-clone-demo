@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class CommentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var userProfileImage: UIImageView!
@@ -23,11 +24,23 @@ class CommentTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        
+        self.userProfileImage.image = UIImage(named: "default_avt_square")
+        self.userName.text = ""
+        self.comment.text = ""
+        self.commentTime.text = ""
     }
     
     func SetUI() {
-        self.userProfileImage.layer.cornerRadius = self.frame.size.height / 2
+        userProfileImage.layer.cornerRadius = userProfileImage.frame.size.height / 2
+    }
+    
+    func setData(data: CommentList?){
+        if let data = data {
+            self.userName.text = "\(data.name! + " " + (data.lastName!))"
+            self.comment.text = data.comment ?? ""
+            self.commentTime.text = FormatDateAndTime.epocFormatter(time: data.commentTime!)
+            ImageDownloder.loadImageFromURL(url: (data.lresID ?? "" ), imageView: self.userProfileImage)
+        }
     }
     
     

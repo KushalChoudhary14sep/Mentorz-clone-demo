@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.shared().window?.rootViewController = vc
             self.shared().window?.makeKeyAndVisible()
         }
-        
+        ImageViewerDataSource.shared.createDirectory()
         return true
     }
     func shared() -> AppDelegate{
