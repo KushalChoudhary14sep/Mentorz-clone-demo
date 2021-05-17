@@ -37,12 +37,4 @@ class TextFieldDesign {
 
 }
 
-extension UIButton {
-   
-    func setBottomBorder(){
-        let lineView = UIView(frame: CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: 1))
-        lineView.backgroundColor=UIColor.gray
-        self.addSubview(lineView)
-    }
-  
-}
+

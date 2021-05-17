@@ -1,9 +1,12 @@
 //
-//  ViewController.swift
+//  SplashVC.swift
 //  mentorznew
 //
-//  Created by Kushal Choudhary on 20/02/21.
+//  Created by Kushal Choudhary on 15/05/21.
 //
+
+import Foundation
+
 
 import UIKit
 

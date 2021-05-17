@@ -10,6 +10,7 @@ target 'mentorznew' do
 	  pod 'PageMenu'
 	  pod 'Cosmos', '~> 23.0'
 	  pod 'PagingTableView'
-    pod 'CountryPickerView'
-    pod 'Nuke'
+   	  pod 'CountryPickerView'
+   	  pod 'Nuke'
+	  pod 'ExpandableLabel'
 end

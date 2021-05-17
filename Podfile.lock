@@ -2,6 +2,7 @@ PODS:
   - Alamofire (5.4.1)
   - Cosmos (23.0.0)
   - CountryPickerView (3.2.0)
+  - ExpandableLabel (0.5.2)
   - IQKeyboardManagerSwift (6.5.6)
   - MaterialComponents/AnimationTiming (123.0.0)
   - MaterialComponents/Availability (123.0.0)
@@ -59,6 +60,7 @@ PODS:
 DEPENDENCIES:
   - Cosmos (~> 23.0)
   - CountryPickerView
+  - ExpandableLabel
   - IQKeyboardManagerSwift
   - "MaterialComponents/TextControls+FilledTextAreas"
   - "MaterialComponents/TextControls+FilledTextFields"
@@ -73,6 +75,7 @@ SPEC REPOS:
     - Alamofire
     - Cosmos
     - CountryPickerView
+    - ExpandableLabel
     - IQKeyboardManagerSwift
     - MaterialComponents
     - MDFInternationalization
@@ -86,6 +89,7 @@ SPEC CHECKSUMS:
   Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
   Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   CountryPickerView: 9b093bfffb4b06a69ba6185a798cadbf863720e7
+  ExpandableLabel: c2fab6d27860c572d67134b30522a5917746171d
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   MaterialComponents: 7a40e33dc8726359d12e667b74a4007d87e4abd4
   MDFInternationalization: 010097556d6b09d2c4ea38e0820ea6d37be6a314
@@ -95,6 +99,6 @@ SPEC CHECKSUMS:
   PagingTableView: ba7869ff22f7cf3f8b2190b0314688d2cb0e46c4
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: 83adf024b3bad48a3b754e32c076f506fd0dfc6d
+PODFILE CHECKSUM: 5f3746366e44a749608d2efb988d05747c675c51
 
 COCOAPODS: 1.10.1

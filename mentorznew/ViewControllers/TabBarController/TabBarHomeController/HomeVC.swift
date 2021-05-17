@@ -8,32 +8,29 @@
 import UIKit
 import SideMenu
 import PagingTableView
+import ExpandableLabel
 
-class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, PagingTableViewDelegate {
+
+
+class HomeVC: UIViewController, UITableViewDataSource, UIPopoverPresentationControllerDelegate, PagingTableViewDelegate {
     
     var data = [PostList]()
     private let refreshControl = UIRefreshControl()
-    
-    @IBOutlet weak var tableView: PagingTableView!
-    
-    @IBOutlet var sideMenuButton: UIButton!
-    @IBOutlet weak var addPostButton: UIButton!
-    @IBAction func searchButton(_ sender: Any) {
-    }
-    
     var sideMenu : SideMenuNavigationController?
     
-    
+    @IBOutlet weak var tableView: PagingTableView!
+    @IBOutlet var sideMenuButton: UIButton!
+    @IBOutlet weak var addPostButton: UIButton!
+   
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
+             
         let sideBar = storyboard.instantiateViewController(identifier: "SideMenuViewController")
         sideMenu = SideMenuNavigationController(rootViewController: sideBar)
         sideMenu?.navigationBar.isHidden = true
@@ -54,7 +51,6 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         refreshControl.tintColor = .red
         self.tableView.addSubview(self.refreshControl)
         tableView.rowHeight = UITableView.automaticDimension
-
     }
     
     @objc func refresh(_ sender: AnyObject) {
@@ -92,15 +88,16 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         }
     }
     
+    @IBAction func searchButton(_ sender: Any) {
+        
+    }
+    
     @IBAction func didTapSideMenuButton(_ sender: Any) {
         
         self.present(sideMenu!, animated: true, completion: nil)
         
     }
     
-    @IBAction func didTapSearchButton(_ sender: Any) {
-        
-    }
     @IBAction func didTapAddPostButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "AddPostViewController") as! AddPostViewController
@@ -115,8 +112,7 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
         self.present(alertController, animated: true, completion: nil)
     }
     
-    
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
@@ -124,15 +120,31 @@ class HomeVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPo
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as? TableViewCell
         cell?.setData(data: data[indexPath.row])
+        cell?.postDescriptionLabel.delegate = self
         cell?.commentDelegate = self
         cell?.shareDelegate = self
         return cell!
     }
     
     func paginate(_ tableView: PagingTableView, to page: Int) {
+        
         self.tableView.isLoading = true
+        if self.tableView.isLoading == true{
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.color = .red
+           spinner.startAnimating()
+           spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+
+        self.tableView.tableFooterView = spinner
+        self.tableView.tableFooterView?.isHidden = false
+        }else {
+            self.tableView.tableFooterView?.isHidden = true
+       
+        }
         getStoriesApiCall(page: page)
         self.tableView.isLoading = false
+        self.tableView.reloadData()
+        
     }
 }
 
@@ -141,7 +153,7 @@ extension HomeVC: ShowCommentVC{
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let secondVC = storyboard.instantiateViewController(identifier: "CommentVC") as? CommentVC
         secondVC?.datasource = cell
-            secondVC!.modalPresentationStyle = .fullScreen
+        secondVC!.modalPresentationStyle = .fullScreen
         secondVC!.modalTransitionStyle = .crossDissolve
         self.present(secondVC!, animated: true, completion: nil)
     }
@@ -149,18 +161,29 @@ extension HomeVC: ShowCommentVC{
 
 
 extension HomeVC: ShowSharePopOver{
-
+    
     
     func didShowSharePopOver(post: PostList) {
         let url = URL(string: "https://www.mentorz.com/stories/\(post.postID!)")
         let content = post.content.contentDescription ?? "null"
         let activityVC = UIActivityViewController(activityItems: [url as Any, content], applicationActivities: nil)
-
+        
         activityVC.popoverPresentationController?.sourceView = view.self
         present(activityVC, animated: true, completion: nil)
-
     }
-    
-    
 }
 
+extension HomeVC : ExpandableLabelDelegate {
+    func willExpandLabel(_ label: ExpandableLabel) {
+        tableView.beginUpdates()
+    }
+    func didExpandLabel(_ label: ExpandableLabel) {
+        tableView.endUpdates()
+    }
+    func willCollapseLabel(_ label: ExpandableLabel) {
+        tableView.beginUpdates()
+    }
+    func didCollapseLabel(_ label: ExpandableLabel) {
+        tableView.endUpdates()
+    }
+}

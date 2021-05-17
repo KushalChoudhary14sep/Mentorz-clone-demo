@@ -24,11 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.shared().window?.rootViewController = vc
             self.shared().window?.makeKeyAndVisible()
         }else{
-            let vc = storyboard.instantiateViewController(identifier: "SplashViewController") as! ViewController
+            let vc = storyboard.instantiateViewController(identifier: "SplashViewController") 
             self.shared().window?.rootViewController = vc
             self.shared().window?.makeKeyAndVisible()
         }
-        ImageViewerDataSource.shared.createDirectory()
         return true
     }
     func shared() -> AppDelegate{

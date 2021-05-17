@@ -14,13 +14,13 @@ class CommentVC : UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var datasource : SharePostID?
     var data = [CommentList]()
     private let refreshControl = UIRefreshControl()
-
-   
+    
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tableView: PagingTableView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var postButton: UIButton!
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "CommentTableViewCell", bundle: nil), forCellReuseIdentifier: "CommentTableViewCell")
@@ -63,7 +63,7 @@ class CommentVC : UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 self.tableView.insertRows(at: indices, with: .none)
                 self.tableView.endUpdates()
                 self.tableView.scrollToRow(at: indices[0], at: UITableView.ScrollPosition.none, animated: false)
-           
+                
                 
             case .failure(let error):
                 print(error.localizedDescription)
@@ -71,20 +71,20 @@ class CommentVC : UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-
     
- 
-        
-        
+    
+    
+    
+    
     
     
     @IBAction func didTapOnBackArrowButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
-
+        
     }
     
     @IBAction func didTapOnPostButton(_ sender: Any) {
-       
+        
         let text = self.textView.text!
         
         GetStoriesRestManager.postComment(request: PostCommentRequest(comment: text), postid: (self.datasource?.data?.postID)!) { (response) in
@@ -108,7 +108,7 @@ class CommentVC : UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CommentTableViewCell", for: indexPath) as? CommentTableViewCell
         if data.count > indexPath.row {
@@ -126,5 +126,5 @@ class CommentVC : UIViewController, UITableViewDelegate, UITableViewDataSource, 
         getCommentsApiCall(page: page, postid: (self.datasource?.data?.postID)!)
         self.tableView.isLoading = false
     }
-
+    
 }

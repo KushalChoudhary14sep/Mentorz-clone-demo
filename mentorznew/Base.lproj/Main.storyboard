@@ -215,7 +215,7 @@
                                         <rect key="frame" x="20" y="20" width="66" height="33.5"/>
                                         <state key="normal" image="r_arrow"/>
                                         <connections>
-                                            <action selector="didTapBackArrowButton:" destination="UD7-QT-nIA" eventType="touchUpInside" id="396-Wi-NER"/>
+                                            <action selector="didTapBackArrowButton:" destination="UD7-QT-nIA" eventType="touchUpInside" id="1Wl-5y-UNp"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="1I8-pM-gKx">
@@ -257,20 +257,22 @@
                                                 <rect key="frame" x="0.0" y="136" width="350" height="58"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" verticalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SZ8-ZD-hVc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="58"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="70" height="58"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="EkS-UJ-KWv"/>
+                                                            <constraint firstAttribute="width" constant="70" id="EkS-UJ-KWv"/>
                                                             <constraint firstAttribute="height" constant="58" id="brQ-ED-ZnR"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="22" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="22" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="+1" image="dropdown">
-                                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="titleColor" name="alwaysBlackColor"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                         </state>
                                                     </button>
                                                     <textField opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hs1-z1-Pr8" customClass="MDCFilledTextField">
-                                                        <rect key="frame" x="81" y="0.0" width="269" height="58"/>
+                                                        <rect key="frame" x="86" y="0.0" width="264" height="58"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="58" id="6Oq-VT-Hvm"/>
@@ -314,7 +316,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Sign Up"/>
                                         <connections>
-                                            <action selector="didTapSignUpButtonForSignUp:" destination="UD7-QT-nIA" eventType="touchUpInside" id="Yf7-jq-hAr"/>
+                                            <action selector="didTapSignUpButtonForSignUp:" destination="UD7-QT-nIA" eventType="touchUpInside" id="nM3-Ah-KbC"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qJk-oF-NVK">
@@ -333,7 +335,7 @@
                                                     <color key="titleColor" systemColor="systemRedColor"/>
                                                 </state>
                                                 <connections>
-                                                    <action selector="didTapLoginButtonInSignupDetailsPage:" destination="UD7-QT-nIA" eventType="touchUpInside" id="0X4-0r-VF1"/>
+                                                    <action selector="didTapLoginButtonInSignupDetailsPage:" destination="UD7-QT-nIA" eventType="touchUpInside" id="byA-wX-Hzp"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -382,14 +384,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="countryCodePicker" destination="SZ8-ZD-hVc" id="3if-Ua-Wxq"/>
-                        <outlet property="emailTextField" destination="3ll-3q-A53" id="BNm-dN-CDL"/>
-                        <outlet property="firstNameTextField" destination="Zop-gk-cQp" id="KWI-34-QK6"/>
-                        <outlet property="lastNameTextField" destination="WPC-QY-WGs" id="Qce-pq-7hq"/>
-                        <outlet property="loginButton" destination="rFc-rE-mmw" id="Uim-h6-s1z"/>
-                        <outlet property="passwordTextField" destination="1Zn-DZ-2Iv" id="IgB-Jv-RhU"/>
-                        <outlet property="phoneNumberTextField" destination="hs1-z1-Pr8" id="g1X-Tg-gNU"/>
-                        <outlet property="signUpButton" destination="ccW-Zq-0qz" id="foJ-gv-4l9"/>
+                        <outlet property="countryCodePicker" destination="SZ8-ZD-hVc" id="hMU-wc-l8h"/>
+                        <outlet property="emailTextField" destination="3ll-3q-A53" id="b9n-98-yDN"/>
+                        <outlet property="firstNameTextField" destination="Zop-gk-cQp" id="lhI-V1-YoN"/>
+                        <outlet property="lastNameTextField" destination="WPC-QY-WGs" id="9Ko-nv-s70"/>
+                        <outlet property="loginButton" destination="rFc-rE-mmw" id="Scv-h4-91v"/>
+                        <outlet property="passwordTextField" destination="1Zn-DZ-2Iv" id="wKY-a4-9kv"/>
+                        <outlet property="phoneNumberTextField" destination="hs1-z1-Pr8" id="6Ma-K9-WQ0"/>
+                        <outlet property="signUpButton" destination="ccW-Zq-0qz" id="Ssy-8o-Q2i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1a-uj-COq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -447,9 +449,6 @@
                                                 <state key="normal" title="Forgot Password?">
                                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
-                                                <connections>
-                                                    <action selector="didTapForgetPasswordButton:" destination="z0c-DT-2Lw" eventType="touchUpInside" id="zbW-ed-hm9"/>
-                                                </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="fNv-tr-cr5">
                                                 <rect key="frame" x="8" y="623" width="398" height="231"/>
@@ -465,9 +464,6 @@
                                                         <state key="normal" title="Login">
                                                             <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="didTapLoginButtonInLoginVC:" destination="z0c-DT-2Lw" eventType="touchUpInside" id="nXn-Gx-fNQ"/>
-                                                        </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="SI3-5Z-IMp">
                                                         <rect key="frame" x="0.0" y="62" width="398" height="23"/>
@@ -553,9 +549,6 @@
                                                                 <state key="normal" title="Signup">
                                                                     <color key="titleColor" systemColor="systemRedColor"/>
                                                                 </state>
-                                                                <connections>
-                                                                    <action selector="didTapSignupButton:" destination="z0c-DT-2Lw" eventType="touchUpInside" id="DOv-PG-fiI"/>
-                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                     </stackView>
@@ -578,7 +571,7 @@
                                                     <constraint firstAttribute="width" constant="268" id="Zyv-3P-fjD"/>
                                                     <constraint firstAttribute="height" constant="45" id="z1x-pb-Rnn"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DeE-oQ-UUi">
@@ -587,9 +580,11 @@
                                                     <constraint firstAttribute="height" constant="40" id="NGV-gE-Pfw"/>
                                                     <constraint firstAttribute="width" constant="65" id="nM5-FX-ZRb"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <inset key="contentEdgeInsets" minX="0.0" minY="4" maxX="0.0" maxY="0.0"/>
+                                                <inset key="imageEdgeInsets" minX="1" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 <state key="normal" title="+1" image="dropdown">
-                                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="titleColor" name="alwaysBlackColor"/>
                                                 </state>
                                             </button>
                                         </subviews>
@@ -647,10 +642,13 @@
                         <outlet property="appleButton" destination="HeP-Cq-mcN" id="3nw-DJ-lad"/>
                         <outlet property="countryCodePicker" destination="DeE-oQ-UUi" id="s82-eA-YF6"/>
                         <outlet property="facebookButton" destination="DX2-8Q-liR" id="Qzp-gp-FQg"/>
+                        <outlet property="forgotPasswordButton" destination="con-Al-rZI" id="4Fj-0I-vrP"/>
                         <outlet property="linkedinButton" destination="6qT-fB-VyU" id="QiN-uC-reM"/>
                         <outlet property="loginButton" destination="Y3Y-1A-j4N" id="fHQ-ZY-57o"/>
                         <outlet property="passwordTextField" destination="WpJ-gv-4Pd" id="9uz-4C-gMh"/>
                         <outlet property="phoneNumberTextField" destination="x5p-sa-m5l" id="w3S-o1-Avh"/>
+                        <outlet property="signupButton" destination="2eU-RS-id5" id="eg1-a6-G4L"/>
+                        <outlet property="superView" destination="lYG-nD-OnF" id="lSK-36-mlZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mvh-7x-Rfz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -761,9 +759,6 @@
                                         <state key="normal" title="Login">
                                             <color key="titleColor" systemColor="systemRedColor"/>
                                         </state>
-                                        <connections>
-                                            <action selector="didTapLoginButton:" destination="rfz-MQ-yaW" eventType="touchUpInside" id="33g-2b-n6E"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -797,7 +792,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="continueButton" destination="UFo-H1-2Jj" id="8Nz-MZ-VJZ"/>
                         <outlet property="countryCodeTF" destination="Pnn-il-yaR" id="IZC-gR-9nW"/>
+                        <outlet property="loginButton" destination="4Sb-bl-7Wr" id="aVs-98-TxB"/>
                         <outlet property="phoneNumberTF" destination="Rso-3D-72o" id="Pfn-eo-wl0"/>
                     </connections>
                 </viewController>
@@ -947,7 +944,6 @@
                                                 <rect key="frame" x="317" y="0.0" width="33.5" height="30"/>
                                                 <state key="normal" image="search"/>
                                                 <connections>
-                                                    <action selector="didTapSearchButton:" destination="HFV-XR-Ia0" eventType="touchUpInside" id="QiV-ee-tih"/>
                                                     <action selector="searchButton:" destination="HFV-XR-Ia0" eventType="touchUpInside" id="UdV-fM-qDA"/>
                                                 </connections>
                                             </button>
@@ -1567,7 +1563,7 @@
                                             <rect key="frame" x="0.0" y="398.5" width="414" height="55"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3xf-M5-sQM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="103.5" height="55"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="104" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsx-OB-jN2">
                                                             <rect key="frame" x="47" y="6" width="10" height="16.5"/>
@@ -1582,7 +1578,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6r1-9A-MrF">
-                                                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="104" height="55"/>
                                                             <connections>
                                                                 <action selector="didTapFollowerButton:" destination="UAe-8t-Q9q" eventType="touchUpInside" id="CR4-Iq-wri"/>
                                                             </connections>
@@ -1605,7 +1601,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CkS-fo-ymy">
-                                                    <rect key="frame" x="103.5" y="0.0" width="104" height="55"/>
+                                                    <rect key="frame" x="104" y="0.0" width="103.5" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLd-FO-tBZ">
                                                             <rect key="frame" x="47" y="6" width="10" height="16.5"/>
@@ -1620,7 +1616,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixR-Gw-gm9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="112" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="55"/>
                                                             <connections>
                                                                 <action selector="didTapFollowingButton:" destination="UAe-8t-Q9q" eventType="touchUpInside" id="ysU-U6-Ldh"/>
                                                             </connections>
@@ -1643,7 +1639,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="emH-pZ-JcY">
-                                                    <rect key="frame" x="207.5" y="0.0" width="103" height="55"/>
+                                                    <rect key="frame" x="207.5" y="0.0" width="103.5" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wI-ZG-xQW">
                                                             <rect key="frame" x="47" y="6" width="10" height="19.5"/>
@@ -1658,7 +1654,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Wn-Hi-AWY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="103" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="55"/>
                                                             <connections>
                                                                 <action selector="didTapMentorButton:" destination="UAe-8t-Q9q" eventType="touchUpInside" id="TCf-5y-wBd"/>
                                                             </connections>
@@ -1681,7 +1677,7 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xP8-C3-ovo">
-                                                    <rect key="frame" x="310.5" y="0.0" width="103.5" height="55"/>
+                                                    <rect key="frame" x="311" y="0.0" width="103" height="55"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibw-zH-024">
                                                             <rect key="frame" x="47" y="6" width="10" height="19.5"/>
@@ -1696,7 +1692,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="118-tY-cOt">
-                                                            <rect key="frame" x="0.0" y="0.0" width="103.5" height="55"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="103" height="55"/>
                                                             <connections>
                                                                 <action selector="didTapMenteeButton:" destination="UAe-8t-Q9q" eventType="touchUpInside" id="fVm-5s-f1C"/>
                                                             </connections>
@@ -2906,6 +2902,9 @@
         <image name="splash_bg" width="320" height="413"/>
         <image name="unselected_rate" width="30" height="30"/>
         <image name="w_arrow" width="33.5" height="33.5"/>
+        <namedColor name="alwaysBlackColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="alwaysWhiteColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

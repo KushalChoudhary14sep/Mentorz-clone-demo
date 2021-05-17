@@ -15,11 +15,9 @@ class EditProfileVC: UIViewController {
     @IBOutlet weak var firstNameTextField: UIStackView!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var countryCodeTextField: UITextField!
-    
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var quickDescriptionTextField: UITextField!
-    
     @IBOutlet weak var experienceDetailsLabel: UITextField!
     @IBOutlet weak var organizationNameLabel: UITextField!
     @IBOutlet weak var locationButton: UIButton!
@@ -77,7 +75,6 @@ class EditProfileVC: UIViewController {
     }
 
 }
-
 
 class CustomSlider: UISlider {
 
